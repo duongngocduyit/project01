@@ -1,5 +1,14 @@
 var io = require('socket.io').listen(1234);
-
+var listSocket = [];
 io.sockets.on('connection', function (socket) {
-  socket.broadcast.emit('user connected');
+   socket.emit('resquetUsername');
+   
+   socket.on('login', function (data) {
+ 		listSocket[data.toString()] = socket;
+
+ 		socket.set('nickname',data);
+	});
+  	socket.on('post', function (from,data,friend) {
+  		listSocket[friend.toString()].emit('chat',from,data);
+ 	});
 });
