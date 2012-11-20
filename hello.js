@@ -12,3 +12,4 @@ io.sockets.on('connection', function (socket) {
   		listSocket[friend.toString()].emit('chat',from,data);
  	});
 });
+
