@@ -5,7 +5,7 @@ io.sockets.on('connection', function (socket) {
    
    socket.on('login', function (data) {
  		listSocket[data.toString()] = socket;
-
+		console.log('hello world!');
  		socket.set('nickname',data);
 	});
   	socket.on('post', function (from,data,friend) {
